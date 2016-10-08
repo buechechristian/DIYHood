@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 # Variables
 
 _url = 'https://api.projectoxford.ai/vision/v1/analyses'
-_key = 'bdf6eb185a964f3e93aadc11da2d60e1'
+_key = 'd2fda28c6dbd4a979a7382e321546376'
 _maxNumRetries = 10
 
 def processRequest( json, data, headers, params ):
@@ -79,18 +79,19 @@ def renderResultOnImage( result, img ):
         cv2.putText( img, categoryName, (30,70), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,0,0), 3 )
 
 
-# URL direction to image
-urlImage = 'https://oxfordportal.blob.core.windows.net/vision/Analysis/3.jpg'
+# Load raw image file into memory
+pathToFileInDisk = r'/Users/withersc/Desktop/critic/images/classroom.jpg'
+with open( pathToFileInDisk, 'rb' ) as f:
+    data = f.read()
 
 # Computer Vision parameters
 params = { 'visualFeatures' : 'Color,Categories'}
 
 headers = dict()
 headers['Ocp-Apim-Subscription-Key'] = _key
-headers['Content-Type'] = 'application/json'
+headers['Content-Type'] = 'application/octet-stream'
 
-json = { 'url': urlImage }
-data = None
+json = None
 
 result = processRequest( json, data, headers, params )
 
@@ -101,7 +102,7 @@ if result is not None:
     # renderResultOnImage( result, img )
     # ig, ax = plt.subplots(figsize=(15, 20))
     print(result)
-else
+else:
     print("No tags")
 
     # ax.imshow( img )
