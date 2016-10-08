@@ -2,7 +2,7 @@
 from flask import *
 from flask import Flask, render_template, request
 from home import *
-from artcriticcv import *
+from jsonGenerator import *
 
 app = Flask(__name__)
 
