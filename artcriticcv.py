@@ -1,22 +1,13 @@
 from __future__ import print_function
 import time
 import requests
-import cv2
 import operator
-import numpy as np
-
-
+#import numpy as np
+from flask import Flask
 # Import library to display results
-import matplotlib.pyplot as plt
-# %matplotlib inline
-# Display images within Jupyter
+#import matplotlib.pyplot as plt
 
-# Variables
-
-_url = 'https://api.projectoxford.ai/vision/v1/analyses'
-_key = 'd2fda28c6dbd4a979a7382e321546376'
-_maxNumRetries = 10
-
+   
 def processRequest( json, data, headers, params ):
 
     """
@@ -64,45 +55,31 @@ def processRequest( json, data, headers, params ):
 
     return result
 
-def renderResultOnImage( result, img ):
 
-    """Display the obtained results onto the input image"""
+_url = 'https://api.projectoxford.ai/vision/v1/analyses'
+_key = 'd2fda28c6dbd4a979a7382e321546376'
+_maxNumRetries = 10
 
-    R = int(result['color']['accentColor'][:2],16)
-    G = int(result['color']['accentColor'][2:4],16)
-    B = int(result['color']['accentColor'][4:],16)
+def outputInfo(picurl):
+    print("started function")
+    # Load raw image file into memory
+    pathToFileInDisk = picurl
+    with open( pathToFileInDisk, 'rb' ) as f:
+        data = f.read()
 
-    cv2.rectangle( img,(0,0), (img.shape[1], img.shape[0]), color = (R,G,B), thickness = 25 )
+    # Computer Vision parameters
+    params = { 'visualFeatures' : 'Color,Categories'}
 
-    if 'categories' in result:
-        categoryName = sorted(result['categories'], key=lambda x: x['score'])[0]['name']
-        cv2.putText( img, categoryName, (30,70), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,0,0), 3 )
+    headers = dict()
+    headers['Ocp-Apim-Subscription-Key'] = _key
+    headers['Content-Type'] = 'application/octet-stream'
 
+    json = None
 
-# Load raw image file into memory
-pathToFileInDisk = r'/Users/withersc/Desktop/critic/images/classroom.jpg'
-with open( pathToFileInDisk, 'rb' ) as f:
-    data = f.read()
+    result = processRequest( json, data, headers, params )
 
-# Computer Vision parameters
-params = { 'visualFeatures' : 'Color,Categories'}
-
-headers = dict()
-headers['Ocp-Apim-Subscription-Key'] = _key
-headers['Content-Type'] = 'application/octet-stream'
-
-json = None
-
-result = processRequest( json, data, headers, params )
-
-if result is not None:
-    # Load the original image, fetched from the URL
-    # arr = np.asarray( bytearray( requests.get( urlImage ).content ), dtype=np.uint8 )
-    # img = cv2.cvtColor( cv2.imdecode( arr, -1 ), cv2.COLOR_BGR2RGB )
-    # renderResultOnImage( result, img )
-    # ig, ax = plt.subplots(figsize=(15, 20))
-    print(result)
-else:
-    print("No tags")
-
-    # ax.imshow( img )
+    if result is not None:
+        return result
+    else:
+        result = "No tags"
+        return result
