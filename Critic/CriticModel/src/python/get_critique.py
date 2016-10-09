@@ -1,17 +1,11 @@
+#!/venv/bin/python
+
 from keras.models import load_model
 from sys import argv
 from autocorrect import spell
 import json, pickle, random, re, string
 import numpy as np
-
-diversity = 0.5
-maxlen = 40
-
-chars = pickle.load(open('chars.pkl', 'rb'))
-char_indices = pickle.load(open('char_indices.pkl', 'rb'))
-indices_char = pickle.load(open('indices_char.pkl', 'rb'))
-
-model = load_model('brain.model')
+import os
 
 def sample(preds, temperature=1.0):
     # helper function to sample an index from a probability array
@@ -22,7 +16,14 @@ def sample(preds, temperature=1.0):
     probas = np.random.multinomial(1, preds, 1)
     return np.argmax(probas)
 
-def get_critique(data):
+def get_critique_raw(data):
+	diversity = 0.55
+	maxlen = 40
+	critic_model_home = os.environ['CRITIC_MODEL_HOME']
+	chars = pickle.load(open(critic_model_home + 'src/python/chars.pkl', 'rb'))
+	char_indices = pickle.load(open(critic_model_home + 'src/python/char_indices.pkl', 'rb'))
+	indices_char = pickle.load(open(critic_model_home + 'src/python/indices_char.pkl', 'rb'))
+	model = load_model(critic_model_home + 'src/python/brain.model')
 	phrases = data['description']['captions']
 	# Only look at objects where P > 50%
 	phrases = filter(lambda x: x['confidence'] > 0.5, phrases)
@@ -34,7 +35,7 @@ def get_critique(data):
 	generated = ''
 	sentence = seed
 	generated += sentence
-	for i in range(600):
+	for i in range(500):
 	    x = np.zeros((1, maxlen, len(chars)))
 	    for t, char in enumerate(sentence):\
 	        x[0, t, char_indices[char]] = 1.
@@ -67,12 +68,10 @@ def spell_para(para):
 	spelt_para = string.join(spelt_sentences, '. ') + '.'
 	return spelt_para
 
-data = json.loads(argv[1])
-critique = get_critique(data)
-# critique = 'a black and white photo of a large city.\ncould may be getted all trees that will of parallel: the artist responding and enous to predist, ons the mood, the artist\'s red abovedjen-xwest seems, the madonna and then want (and the setter actuan\'s faginators to suggest a foremur space. and the create even fisuing compositional conclusion of series. and the subjects, but a restrained and sunlike the background in impressical as we to emovelf.'
-
-formatted_para = format_para(critique)
-spelt_para = spell_para(formatted_para)
-
-print spelt_para
+def get_critique(data):
+	critique = get_critique_raw(data)
+	# critique = 'a black and white photo of a large city.\ncould may be getted all trees that will of parallel: the artist responding and enous to predist, ons the mood, the artist\'s red abovedjen-xwest seems, the madonna and then want (and the setter actuan\'s faginators to suggest a foremur space. and the create even fisuing compositional conclusion of series. and the subjects, but a restrained and sunlike the background in impressical as we to emovelf.'
+	formatted_para = format_para(critique)
+	spelt_para = spell_para(formatted_para)
+	return spelt_para
 

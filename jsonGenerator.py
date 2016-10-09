@@ -20,6 +20,7 @@ def outputInfo(picurl):
 		conn.request("POST", "/vision/v1.0/analyze?%s" % params, data, headers)
 		response = conn.getresponse()
 		data = response.read()
+		# print data
 		return data
 		conn.close()
 	except Exception as e:
