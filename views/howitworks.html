@@ -22,31 +22,13 @@
         <div class="wrapper" style="text-align: center;">
 	            <img id="brain" src="img/smallBrain.png" style="top: 150px; position: relative; max-width: 300px; z-index: 1; opacity: .5;"/>
 	            
-	            <div class="topRightPinkSheet"></div> 
-	            
-	            <div class="bottomRightPinkSheet"><img src="img/picasso.jpg" style="position: relative; min-height: 100%; max-height: 100%; min-width: 100%; max-width: 100%;"/></div> 
-	            
-	            <div class="bottomLeftPinkSheet"></div>  
-	            
-	         <div class="leftKleeSheet"><img src="img/klee.jpg" style="position: relative;max-height: 100%; min-height: 100%; max-width: 100%; min-width: 100%; overflow: hidden"/></div>   
+	             
 	            
 			<div class="topContentSheet">
 				
-				<div id="bodyCopy">Let NeuroCritic analyze art and photos for you.  Trained on a database of hundereds of independent art reviews, our neural network will generate a unique critical response to any photo you upload.
-					
-					<!--
-<p><button class="btn">Upload a Photo</button></p>
-				<p><button class="btn2">How it Works</button></p>
--->
-				
-				<!-- <p><a href="#" id="photobutton" class="btn">Upload a Photo</a></p> -->
-				
-				<p><input type="file" onchange="previewFile()" class="btn3"></p>
-				<!-- <p><br><br><img src="" height="200" alt="Image preview..."></p> -->
-				
-				<p><a href="howitworks.html" class="btn2">How it Works</a></p>
-				
-				
+				<div id="bodyCopy">NeuroCritic runs on a custom API we built on top of Microsoft’s computer vision cognition services.  Uploaded photos return a list of content tags that are used to prime our neural net for each unique critique.  Built at MHacks 8 in the Detroit Masonic Temple, Oct 7-9.
+					<!-- <p><button class="btn">Return Home</button></p> -->
+					<p><a href="index.html" class="btn">Return Home</a></p>
 					
 				</div>
 				
@@ -68,36 +50,6 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-        
-        <!-- button get request code -->
-        <script>
-		$(document).ready(function(){
-		$("button.btn").click(function(){
-        $.get("demo_test.asp", function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
-        });
-    	});
-		});
-		</script>
-		
-		
-		
-		<script>
-		function previewFile() {
-  var preview = document.querySelector('img');
-  var file    = document.querySelector('input[type=file]').files[0];
-  var reader  = new FileReader();
-
-  reader.addEventListener("load", function () {
-    // preview.src = reader.result;
-  }, false);
-
-  if (file) {
-    reader.readAsDataURL(file);
-  }
-}
-</script>
-
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

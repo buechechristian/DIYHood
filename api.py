@@ -5,8 +5,12 @@ from home import *
 from jsonGenerator import *
 import os
 import commands
-# from mhacks.Critic.CriticModel.src.python import *
 import json
+import base64
+import logging
+
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
 
 execfile("./Critic/CriticModel/src/python/get_critique.py")
 
@@ -17,21 +21,39 @@ def get_caption():
 	if not(request.args.has_key("image")):
 		abort(404)
 	image = request.args.get("image")
-	# print image
-	jsonMess = outputInfo(image)
+	image = image.replace(" ", "+")
+
+	# print image[0:199]
+	# print image[(len(image) - 200):(len(image) - 1)]
+
+	#image is 64 encoded file - decode and save as imageToSave.png
+	data = base64.b64decode(image)
+	with open("imageToSave.png", "wb") as fh:
+		fh.write(data)
+
+
+	jsonMess = outputInfo('imageToSave.png')
+
+
+
 	#print jsonMess
 	if jsonMess is None:
 		return make_response(jsonify({'error': 'Not found'}), 404)
 
-	#print jsonMess
+	print jsonMess
 
 	#cmdstring = "python Critic/CriticModel/src/python/get_critique.py '%s'" % (jsonMess)
 	#critique = commands.getstatusoutput(cmdstring)[1]
-	critique = get_critique(json.loads(jsonMess))
+
+	# Get analysis from Cognitive Services
+	img_digest = json.loads(jsonMess)
+
+	critique = get_critique(img_digest)
 	# print critique
 
 	jObject = dict()
 	jObject['critique'] = critique
+	jObject['accentColor'] = img_digest['color']['accentColor']
 	return jsonify(jObject)
 	#print cmdstring
 

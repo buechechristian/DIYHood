@@ -26,15 +26,20 @@ def get_critique_raw(data):
 	model = load_model(critic_model_home + 'src/python/brain.model')
 	phrases = data['description']['captions']
 	# Only look at objects where P > 50%
-	phrases = filter(lambda x: x['confidence'] > 0.5, phrases)
+	phrases = filter(lambda x: x['confidence'] > 0.3, phrases)
 	# Sort from most likely to least likely
-	phrases = sorted(phrases, key=lambda x: 1 - x['confidence'])
-	seed = 'the artist has created ' + phrases[0]['text'] + '.'
+	if len(phrases) > 0:
+		phrases = sorted(phrases, key=lambda x: 1 - x['confidence'])
+		seed_long = 'the artist has created ' + phrases[0]['text'] + '.'
+	else:
+		seed_long = "This piece transcends any discrete definition.  It subverts expectation by defying our desire to analyze or quantify its formal elements."
+	# Truncate seed if too long
+	seed = seed_long
 	if len(seed) > maxlen:
 		seed = seed[len(seed) - maxlen:]
-	generated = ''
+	# Start with seed
+	generated = seed_long
 	sentence = seed
-	generated += sentence
 	for i in range(500):
 	    x = np.zeros((1, maxlen, len(chars)))
 	    for t, char in enumerate(sentence):\
