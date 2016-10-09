@@ -23,7 +23,7 @@ def get_critique_raw(data):
 	chars = pickle.load(open(critic_model_home + 'src/python/chars.pkl', 'rb'))
 	char_indices = pickle.load(open(critic_model_home + 'src/python/char_indices.pkl', 'rb'))
 	indices_char = pickle.load(open(critic_model_home + 'src/python/indices_char.pkl', 'rb'))
-	model = load_model(critic_model_home + 'src/python/brain.model')
+	model = load_model(critic_model_home + 'src/python/brain2.model')
 	phrases = data['description']['captions']
 	# Only look at objects where P > 50%
 	phrases = filter(lambda x: x['confidence'] > 0.3, phrases)
