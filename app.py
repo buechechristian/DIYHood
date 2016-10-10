@@ -4,7 +4,7 @@ from flask import Flask, render_template, request
 from home import *
 import jinja2
 
-app = Flask(__name__, template_folder="views")
+app = Flask(__name__, template_folder="templates")
 app.register_blueprint(home)
 
 

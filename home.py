@@ -2,7 +2,7 @@ from flask import *
 # from test import *
 
 
-home = Blueprint('home', __name__, template_folder="views")
+home = Blueprint('home', __name__, template_folder="templates")
 
 @home.route('/', methods=['GET'])
 def get_caption():
@@ -24,3 +24,11 @@ def post_route():
 	caption = ""
 
 	return render_template("index.html", caption=caption, caption_bool=False)
+
+@home.route('/result', methods=['GET'])
+def get_result():
+	return render_template("result.html")
+
+@home.route('/howitworks', methods=['GET'])
+def get_how_it_works():
+	return render_template("howitworks.html")

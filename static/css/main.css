@@ -219,6 +219,9 @@ body {
   box-shadow: 0px 3px 3px rgba(102, 102, 102, 0.57);
   /* font-family: Arial; */
   color: #ffffff;
+  width: 230px;
+  max-width: 88%;
+  white-space: nowrap;
   font-size: 16px;
   background: #ff4b8a;
   padding: 6px 60px 6px 60px;
@@ -241,6 +244,9 @@ body {
   box-shadow: 0px 3px 3px rgba(102, 102, 102, 0.57);
   /* font-family: Arial; */
   color: #ff4b8a;
+  width: 230px;
+  max-width: 88%;
+  white-space: nowrap;
   font-size: 16px;
   background: #FFCBDD;
   padding: 6px 68px 6px 68px;
@@ -264,6 +270,9 @@ body {
   box-shadow: 0px 3px 3px rgba(102, 102, 102, 0.57);
   /* font-family: Arial; */
   color: #ffffff;
+  width: 230px;
+  max-width: 88%;
+  white-space: nowrap;
   width:230px;
   font-size: 16px;
   background: #ff4b8a;

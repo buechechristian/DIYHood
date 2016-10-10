@@ -7,28 +7,33 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    </head>
+        <link rel="stylesheet" href="/static/css/normalize.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+        <script src="/static/js/vendor/modernizr-2.8.3.min.js"></script>
     <body>
-        <div class="headerBar"><div id="title" class="pageTitle">NeuroCritic</div><img id="waves" src="img/waveright.png" style=" bottom: -1px; right: 0px; position: absolute;"/></div>
+        <div class="headerBar"><div id="title" class="pageTitle">NeuroCritic</div><img id="waves" src="/static/img/waveright.png" style=" bottom: -1px; right: 0px; position: absolute;"/></div>
         <!-- <img id="waves" src="img/waveleft.png" style=" top: 108px; left: 0px; position: absolute;"/> -->
         
 
         <div class="wrapper" style="text-align: center;">
-	            <img id="brain" src="img/smallBrain.png" style="top: 150px; position: relative; max-width: 300px; z-index: 1; opacity: .5;"/>
+	            <!-- <img id="brain" src="img/smallBrain.png" style="top: 50px; position: relative; max-width: 300px; z-index: 1; opacity: .5;"/> -->
 	            
 	             
 	            
-			<div class="topContentSheet">
+			<div class="topContentSheet" style="width:84%; left:8%; top:120px; height: 750px;">
 				
-				<div id="bodyCopy">NeuroCritic runs on a custom API we built on top of Microsoft’s computer vision cognition services.  Uploaded photos return a list of content tags that are used to prime our neural net for each unique critique.  Built at MHacks 8 in the Detroit Masonic Temple, Oct 7-9.
+				<div id="bodyCopy">     
+                    <p id="showText">Hmm....</p>
+					
+					<div id="imageFrame" class="imageFrame">
+                        <img id="painting" src="#"/>               
+                    </div>
+					
 					<!-- <p><button class="btn">Return Home</button></p> -->
-					<p><a href="index.html" class="btn">Return Home</a></p>
+					<p><a href="/" class="btn">Return Home</a></p>
 					
 				</div>
 				
@@ -46,10 +51,9 @@
         
         
 
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script>window.jQuery || document.write('<script src="/static/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="/static/js/plugins.js"></script>
+        <script src="/static/js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

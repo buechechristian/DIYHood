@@ -26,7 +26,7 @@ def get_critique_raw(data):
 	model = load_model(critic_model_home + 'src/python/brain2.model')
 	phrases = data['description']['captions']
 	# Only look at objects where P > 50%
-	phrases = filter(lambda x: x['confidence'] > 0.3, phrases)
+	phrases = filter(lambda x: x['confidence'] > 0.15, phrases)
 	# Sort from most likely to least likely
 	if len(phrases) > 0:
 		phrases = sorted(phrases, key=lambda x: 1 - x['confidence'])

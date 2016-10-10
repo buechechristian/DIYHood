@@ -1,6 +1,7 @@
 #!venv/bin/python
 from flask import *
 from flask import Flask, render_template, request
+from flask.ext.cors import CORS, cross_origin
 from home import *
 from jsonGenerator import *
 import os
@@ -15,8 +16,11 @@ log.setLevel(logging.ERROR)
 execfile("./Critic/CriticModel/src/python/get_critique.py")
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/foo": {"origins": "localhost"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/criticize', methods=['GET'])
+@cross_origin(origin='localhost', headers=['Content- Type'])
 def get_caption():
 	if not(request.args.has_key("image")):
 		abort(404)
@@ -63,4 +67,4 @@ def not_found(error):
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(debug=True, port=3000)
