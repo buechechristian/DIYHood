@@ -4,7 +4,7 @@
 <br/>
 Our neural network has been trained on a database of hundreds of independent art reviews, and will generate a unique critical response to any photo you upload.
 
-<b>When did we build it:<b>
+<b>When did we build it:</b>
 <br/>
 NeuroCritic was fully developed during a 60-hour hackathon, mhacks8, on October 7-9 2016. It was built by Christian Bueche, Chris Withers, and Boston Walker.
 
@@ -32,3 +32,12 @@ microsoft-computer-vision-api,
 html5,
 css3,
 machine-learning
+
+<b>How to Deploy</b>
+<br/>
+1. git clone
+2. Create virtual envrionment and install dependencies from requirements.txt
+3. Run api.py
+4. Run app.py
+5. Navigate to http://127.0.0.1:5000
+6. See what NeuroCritic has to say!
