@@ -4,6 +4,10 @@
 <br/>
 Our neural network has been trained on a database of hundreds of independent art reviews, and will generate a unique critical response to any photo you upload.
 
+<b>When did we build it:<b>
+<br/>
+NeuroCritic was fully developed during a 60-hour hackathon, mhacks8, on October 7-9 2016. It was built by Christian Bueche, Chris Withers, and Boston Walker.
+
 <b>How we built it:</b>
 <br/>
 We adapted a classic LSTM recurrent neural network model to predict art reviews character-by-character using a dataset we scraped and cleaned from art bloggers. The neural net is seeded with feature data from Microsoft's Cognitive Services computer vision API, guaranteeing a unique and vaguely relevant critique with every user interaction!
@@ -22,9 +26,9 @@ Our neural net is hungry! We plan on feeding it more web-scraped text from art-c
 
 <b>Built With:</b>
 <br/>
-python
-google-cloud
-microsoft-computer-vision-api
-html5
-css3
+python, 
+google-cloud,
+microsoft-computer-vision-api,
+html5,
+css3,
 machine-learning
