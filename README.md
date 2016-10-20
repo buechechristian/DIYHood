@@ -36,8 +36,9 @@ machine-learning
 <b>How to Deploy</b>
 <br/>
 1. git clone <br/>
-2. Create virtual envrionment and install dependencies from requirements.txt <br/>
-3. Run api.py <br/>
-4. Run app.py <br/>
-5. Navigate to http://127.0.0.1:5000 <br/>
-6. See what NeuroCritic has to say! <br/>
+2. Create and enter virtual envrionment (source venv/bin/activate) <br/>
+3. install dependencies from requirements.txt (pip install -r requirements.txt)  <br/>
+4. Run api.py <br/>
+5. Run app.py <br/>
+6. Navigate to http://127.0.0.1:5000 <br/>
+7. See what NeuroCritic has to say about your art! <br/>
