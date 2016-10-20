@@ -8,13 +8,13 @@ import numpy as np
 import os
 
 def sample(preds, temperature=1.0):
-    # helper function to sample an index from a probability array
-    preds = np.asarray(preds).astype('float64')
-    preds = np.log(preds) / temperature
-    exp_preds = np.exp(preds)
-    preds = exp_preds / np.sum(exp_preds)
-    probas = np.random.multinomial(1, preds, 1)
-    return np.argmax(probas)
+	# helper function to sample an index from a probability array
+	preds = np.asarray(preds).astype('float64')
+	preds = np.log(preds) / temperature
+	exp_preds = np.exp(preds)
+	preds = exp_preds / np.sum(exp_preds)
+	probas = np.random.multinomial(1, preds, 1)
+	return np.argmax(probas)
 
 def get_critique_raw(data):
 	diversity = 0.55
@@ -41,16 +41,16 @@ def get_critique_raw(data):
 	generated = seed_long
 	sentence = seed
 	for i in range(500):
-	    x = np.zeros((1, maxlen, len(chars)))
-	    for t, char in enumerate(sentence):\
-	        x[0, t, char_indices[char]] = 1.
+		x = np.zeros((1, maxlen, len(chars)))
+		for t, char in enumerate(sentence):
+			x[0, t, char_indices[char]] = 1.
 
-	    preds = model.predict(x, verbose=0)[0]
-	    next_index = sample(preds, diversity)
-	    next_char = indices_char[next_index]
+		preds = model.predict(x, verbose=0)[0]
+		next_index = sample(preds, diversity)
+		next_char = indices_char[next_index]
 
-	    generated += next_char
-	    sentence = sentence[1:] + next_char
+		generated += next_char
+		sentence = sentence[1:] + next_char
 	return generated
 
 def format_para(para):

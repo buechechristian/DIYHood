@@ -57,7 +57,7 @@ def get_caption():
 
 	jObject = dict()
 	jObject['critique'] = critique
-	jObject['accentColor'] = img_digest['color']['accentColor']
+	jObject['accentcolor'] = img_digest['color']['accentcolor']
 	return jsonify(jObject)
 	#print cmdstring
 

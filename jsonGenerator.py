@@ -21,6 +21,7 @@ def outputInfo(picurl):
 		response = conn.getresponse()
 		data = response.read()
 		# print data
+		data = data.lower()
 		return data
 		conn.close()
 	except Exception as e:
