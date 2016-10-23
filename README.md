@@ -1,12 +1,11 @@
 # NeuroCritic
 
+*NeuroCritic was fully developed during a 36-hour hackathon, mhacks8, on October 7-9 2016. It was built by Christian Bueche, Chris Withers, and Boston Walker.*
+<br/>
+
 <b>What it does:</b>
 <br/>
 Our neural network has been trained on a database of hundreds of independent art reviews, and will generate a unique critical response to any photo you upload.
-
-<b>When did we build it:</b>
-<br/>
-NeuroCritic was fully developed during a 36-hour hackathon, mhacks8, on October 7-9 2016. It was built by Christian Bueche, Chris Withers, and Boston Walker.
 
 <b>How we built it:</b>
 <br/>
