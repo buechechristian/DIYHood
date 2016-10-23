@@ -6,7 +6,7 @@ Our neural network has been trained on a database of hundreds of independent art
 
 <b>When did we build it:</b>
 <br/>
-NeuroCritic was fully developed during a 60-hour hackathon, mhacks8, on October 7-9 2016. It was built by Christian Bueche, Chris Withers, and Boston Walker.
+NeuroCritic was fully developed during a 36-hour hackathon, mhacks8, on October 7-9 2016. It was built by Christian Bueche, Chris Withers, and Boston Walker.
 
 <b>How we built it:</b>
 <br/>
